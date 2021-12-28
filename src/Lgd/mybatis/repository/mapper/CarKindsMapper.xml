@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Lgd.mybatis.repository.mapper.CarKindsMapper">
+	<cache />
+	
+
+
+	<sql id="BaseColumns">
+		차종_ID AS class_ID,
+		연료_ID AS name_ID,
+		차종 as Kinds,
+		크기
+	</sql>
+
+
+	<select id="selectCarKindsByPrimaryKey" parameterType="String" resultType="Lgd.mybatis.model.CarKinds">
+		SELECT
+			<include refid="BaseColumns"/>
+		FROM CarKinds
+		WHERE 차종 = #{Kinds}	
+	</select> 
+	
+
+
+
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+<typeAliases>
+	<typeAlias type="Lgd.mybatis.model.Member" alias="Member" />
+	<typeAlias type="Lgd.mybatis.model.CarMaker" alias="CarMaker" />
+	<typeAlias type="Lgd.mybatis.model.CarClass" alias="CarClass" />	
+	<typeAlias type="Lgd.mybatis.model.CarName" alias="CarName" />
+	<typeAlias type="Lgd.mybatis.model.CarKinds" alias="CarKinds" />
+</typeAliases>
+<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/project01"/>
+				<property name="username" value="projectexam"/>
+				<property name="password" value="hws0310" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource = "Lgd/mybatis/repository/mapper/MemberMapper.xml"/>
+		<mapper resource = "Lgd/mybatis/repository/mapper/CarMakerMapper.xml"/>	
+		<mapper resource = "Lgd/mybatis/repository/mapper/CarClassMapper.xml"/>	
+		<mapper resource = "Lgd/mybatis/repository/mapper/CarNameMapper.xml"/>	
+		<mapper resource = "Lgd/mybatis/repository/mapper/CarKindsMapper.xml"/>		
+	</mappers>
+</configuration>

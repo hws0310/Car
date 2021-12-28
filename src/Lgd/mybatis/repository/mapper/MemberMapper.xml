@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Lgd.mybatis.repository.mapper.MemberMapper">
+	<cache />
+
+	<sql id="BaseColumns">
+		id,
+		pw,
+		name,
+		age,
+		address,
+		email
+	</sql>
+
+
+	<select id="selectMemberByPrimaryKey" parameterType="String" resultType="Lgd.mybatis.model.Member">
+		SELECT
+			<include refid="BaseColumns"/>
+		FROM Member
+		WHERE id = #{id}	
+	</select>
+
+	<insert id="insertMember" parameterType="Member">
+		INSERT INTO Member(id, pw, name, age, address, email)
+		VALUES (#{id}, #{pw}, #{name}, #{age}, #{address}, #{email})
+	</insert>
+	
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM member
+		WHERE id = #{id};
+	</delete>
+
+</mapper>

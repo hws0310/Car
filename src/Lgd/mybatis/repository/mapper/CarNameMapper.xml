@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="Lgd.mybatis.repository.mapper.CarNameMapper">
+	<cache />
+
+
+		<resultMap type="CarKinds" id="CarKinds">
+		<id column="carkind_ID" property="carkind_ID"/>
+		<result column="fuel_ID" property="fuel_ID"/>
+		<result column="kinds" property="kinds"/>
+		<result column="sizes" property="sizes"/>
+		</resultMap>
+		
+		<resultMap type="CarName" id="CarName">
+		<id column="name_ID" property="name_ID"/>
+		<result column="carkind_ID" property="carkind_ID"/>
+		<result column="name" property="name"/>
+		<association property="CarKinds" resultMap="CarKinds"/>
+		</resultMap>
+
+
+	<sql id="BaseColumns">
+		이름_ID,
+		차종_ID,
+		이름 as 'name'
+	</sql>
+
+
+	<select id="selectCarNameByPrimaryKey" parameterType="String" resultType="Lgd.mybatis.model.CarName">
+		SELECT 
+			<include refid="BaseColumns"/>
+		FROM CarName
+		WHERE 이름 = #{name}	
+		group by name
+	</select> 
+	
+
+</mapper>
